@@ -9,12 +9,12 @@ flowerShopApi
 
 ## Testing and run:
 
-open project in intellij idea
-
 ```
 // start project - run Main.kt
 
 // run test case - run MainTest
 ```
+
+open project in intellij idea
 
 open localhost:7000
