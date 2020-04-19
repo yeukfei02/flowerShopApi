@@ -13,5 +13,5 @@ open project in intellij idea
 ```
 // run Main.kt - start project
 
-// run test case - run MainTest
+// run MainTest - run test case
 ```
