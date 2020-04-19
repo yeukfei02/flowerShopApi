@@ -1,4 +1,4 @@
-package com.donaldwu.logger
+package com.donaldwu.common.logger
 
 import org.slf4j.LoggerFactory
 

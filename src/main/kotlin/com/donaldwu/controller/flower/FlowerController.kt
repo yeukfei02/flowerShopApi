@@ -1,7 +1,7 @@
 package com.donaldwu.controller.flower
 
 import com.donaldwu.common.Common
-import com.donaldwu.logger.Logger
+import com.donaldwu.common.logger.Logger
 import io.javalin.http.Context
 
 class FlowerController {
@@ -34,6 +34,12 @@ class FlowerController {
 
         fun updateFlowerById(ctx: Context) {
             val id = ctx.pathParam("id")
+
+            val body = ctx.body()
+            if (body.isNotEmpty()) {
+                val bodyDataMap = Common.getBodyData(body)
+                Logger.info("bodyDataMap = $bodyDataMap")
+            }
 
             val resultMap = hashMapOf<String, String>()
             resultMap["message"] = "update flower by id"

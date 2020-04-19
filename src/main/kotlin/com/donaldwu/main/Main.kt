@@ -1,30 +1,74 @@
 package com.donaldwu.main
 
 import com.donaldwu.controller.flower.FlowerController
+import com.donaldwu.controller.main.MainController
 import com.donaldwu.controller.shop.ShopController
 import io.javalin.Javalin
+import io.javalin.apibuilder.ApiBuilder.*
 
 fun main() {
     val app = Javalin.create().start(7000)
 
     // main route
-    app.get("/") { ctx ->
-        val resultMap = hashMapOf<String, String>()
-        resultMap["message"] = "flowerShopApi"
-        ctx.status(200).json(resultMap)
+    app.routes {
+        path("/") {
+            get {
+                MainController.getMain(it)
+            }
+        }
     }
 
-    // flower route
-    app.post("/api/flower/create-flower") { ctx -> FlowerController.createFlower(ctx) }
-    app.get("/api/flower") { ctx -> FlowerController.getAllFlower(ctx) }
-    app.get("/api/flower/:id") { ctx -> FlowerController.getFlowerById(ctx) }
-    app.patch("/api/flower/:id") { ctx -> FlowerController.updateFlowerById(ctx) }
-    app.delete("/api/flower/:id") { ctx -> FlowerController.deleteFlowerById(ctx) }
+    app.routes {
+        path("/api") {
+            // flower route
+            app.routes {
+                path("/flower") {
+                    path("/create-flower") {
+                        post {
+                            FlowerController.createFlower(it)
+                        }
+                    }
+                    get {
+                        FlowerController.getAllFlower(it)
+                    }
+                    path(":id") {
+                        get {
+                            FlowerController.getFlowerById(it)
+                        }
+                        patch {
+                            FlowerController.updateFlowerById(it)
+                        }
+                        delete {
+                            FlowerController.deleteFlowerById(it)
+                        }
+                    }
+                }
+            }
 
-    // shop route
-    app.post("/api/flower/create-shop") { ctx -> ShopController.createShop(ctx) }
-    app.get("/api/shop") { ctx -> ShopController.getAllShop(ctx) }
-    app.get("/api/shop/:id") { ctx -> ShopController.getShopById(ctx) }
-    app.patch("/api/shop/:id") { ctx -> ShopController.updateShopById(ctx) }
-    app.delete("/api/shop/:id") { ctx -> ShopController.deleteShopById(ctx) }
+            // shop route
+            app.routes {
+                path("/shop") {
+                    path("/create-shop") {
+                        post {
+                            ShopController.createShop(it)
+                        }
+                    }
+                    get {
+                        ShopController.getAllShop(it)
+                    }
+                    path(":id") {
+                        get {
+                            ShopController.getShopById(it)
+                        }
+                        patch {
+                            ShopController.updateShopById(it)
+                        }
+                        delete {
+                            ShopController.deleteShopById(it)
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
