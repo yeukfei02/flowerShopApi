@@ -16,9 +16,7 @@ fun main() {
                 MainController.getMain(it)
             }
         }
-    }
 
-    app.routes {
         path("/api") {
             // flower route
             app.routes {
