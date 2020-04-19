@@ -13,7 +13,7 @@ class Common {
             return gson.fromJson(body, type)
         }
 
-        fun getDataBase() {
+        fun connectDataBase() {
             val dotenv = dotenv()
             val host = dotenv["HOST"]
             val portNumber = dotenv["PORT_NUMBER"]
