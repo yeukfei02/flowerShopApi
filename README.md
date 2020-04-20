@@ -18,3 +18,7 @@ flowerShopApi
 open project in intellij idea
 
 open localhost:7000
+
+## Contributing
+
+Please refer to [CONTRIBUTING.md](https://github.com/yeukfei02/flowerShopApi/blob/master/CONTRIBUTING.md)
