@@ -1,7 +1,7 @@
 package com.donaldwu.controller.shop
 
 import com.donaldwu.common.Common
-import com.donaldwu.common.logger.Logger
+import com.donaldwu.model.shop.ShopModel
 import io.javalin.http.Context
 
 class ShopController {
@@ -10,25 +10,37 @@ class ShopController {
             val body = ctx.body()
             if (body.isNotEmpty()) {
                 val bodyDataMap = Common.getBodyData(body)
-                Logger.info("bodyDataMap = $bodyDataMap")
+
+                val shopName = bodyDataMap["shopName"].toString()
+                val phone = bodyDataMap["phone"].toString()
+                ShopModel.createShop(shopName, phone)
             }
 
             val resultMap = hashMapOf<String, String>()
-            resultMap["message"] = "create shop"
+            resultMap["message"] = "create shop success"
             ctx.status(201).json(resultMap)
         }
 
         fun getAllShop(ctx: Context) {
-            val resultMap = hashMapOf<String, String>()
+            val shopList = ShopModel.getAllShop()
+
+            val resultMap = hashMapOf<String, Any>()
             resultMap["message"] = "get all shop"
+            resultMap["shops"] = shopList
             ctx.status(200).json(resultMap)
         }
 
         fun getShopById(ctx: Context) {
             val id = ctx.pathParam("id")
 
-            val resultMap = hashMapOf<String, String>()
+            var shop = mapOf<String, Any>()
+            if (id.isNotEmpty()) {
+                shop = ShopModel.getShopById(id)
+            }
+
+            val resultMap = hashMapOf<String, Any>()
             resultMap["message"] = "get shop by id"
+            resultMap["shop"] = shop
             ctx.status(200).json(resultMap)
         }
 
@@ -38,7 +50,9 @@ class ShopController {
             val body = ctx.body()
             if (body.isNotEmpty()) {
                 val bodyDataMap = Common.getBodyData(body)
-                Logger.info("bodyDataMap = $bodyDataMap")
+
+                if (id.isNotEmpty())
+                    ShopModel.updateShopById(id)
             }
 
             val resultMap = hashMapOf<String, String>()
@@ -48,6 +62,9 @@ class ShopController {
 
         fun deleteShopById(ctx: Context) {
             val id = ctx.pathParam("id")
+            if (id.isNotEmpty()) {
+                ShopModel.deleteShopById(id)
+            }
 
             val resultMap = hashMapOf<String, String>()
             resultMap["message"] = "delete shop by id"
