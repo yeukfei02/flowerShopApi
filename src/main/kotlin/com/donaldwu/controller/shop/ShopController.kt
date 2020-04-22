@@ -47,28 +47,46 @@ class ShopController {
         fun updateShopById(ctx: Context) {
             val id = ctx.pathParam("id")
 
-            val body = ctx.body()
-            if (body.isNotEmpty()) {
-                val bodyDataMap = Common.getBodyData(body)
+            if (id.isNotEmpty()) {
+                val shopFromDB = ShopModel.getShopById(id)
+                if (shopFromDB.isNotEmpty()) {
+                    val body = ctx.body()
+                    if (body.isNotEmpty()) {
+                        val bodyDataMap = Common.getBodyData(body)
 
-                if (id.isNotEmpty())
-                    ShopModel.updateShopById(id)
+                        val shopName = bodyDataMap["shopName"].toString()
+                        val phone = bodyDataMap["phone"].toString()
+
+                        ShopModel.updateShopById(id, shopName, phone)
+                    }
+
+                    val resultMap = hashMapOf<String, String>()
+                    resultMap["message"] = "update shop by id"
+                    ctx.status(200).json(resultMap)
+                } else {
+                    val resultMap = hashMapOf<String, String>()
+                    resultMap["message"] = "update shop by id error, no this shop id"
+                    ctx.status(400).json(resultMap)
+                }
             }
-
-            val resultMap = hashMapOf<String, String>()
-            resultMap["message"] = "update shop by id"
-            ctx.status(200).json(resultMap)
         }
 
         fun deleteShopById(ctx: Context) {
             val id = ctx.pathParam("id")
             if (id.isNotEmpty()) {
-                ShopModel.deleteShopById(id)
-            }
+                val shopFromDB = ShopModel.getShopById(id)
+                if (shopFromDB.isNotEmpty()) {
+                    ShopModel.deleteShopById(id)
 
-            val resultMap = hashMapOf<String, String>()
-            resultMap["message"] = "delete shop by id"
-            ctx.status(200).json(resultMap)
+                    val resultMap = hashMapOf<String, String>()
+                    resultMap["message"] = "delete shop by id"
+                    ctx.status(200).json(resultMap)
+                } else {
+                    val resultMap = hashMapOf<String, String>()
+                    resultMap["message"] = "delete shop by id error, no this shop id"
+                    ctx.status(400).json(resultMap)
+                }
+            }
         }
     }
 }

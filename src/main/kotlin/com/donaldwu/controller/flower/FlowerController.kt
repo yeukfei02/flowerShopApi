@@ -60,28 +60,51 @@ class FlowerController {
         fun updateFlowerById(ctx: Context) {
             val id = ctx.pathParam("id")
 
-            val body = ctx.body()
-            if (body.isNotEmpty()) {
-                val bodyDataMap = Common.getBodyData(body)
+            if (id.isNotEmpty()) {
+                val flowerFromDB = FlowerModel.getFlowerById(id)
+                if (flowerFromDB.isNotEmpty()) {
+                    val body = ctx.body()
+                    if (body.isNotEmpty()) {
+                        val bodyDataMap = Common.getBodyData(body)
 
-                if (id.isNotEmpty())
-                    FlowerModel.updateFlowerById(id)
+                        val flowerName = bodyDataMap["flowerName"].toString()
+                        val color = bodyDataMap["color"].toString()
+                        val flowerType = bodyDataMap["flowerType"].toString()
+                        val price = bodyDataMap["price"].toString().toDouble()
+                        val occasion = bodyDataMap["occasion"].toString()
+                        val shopId = bodyDataMap["shopId"].toString().substring(0, bodyDataMap["shopId"].toString().indexOf(".")).toInt()
+
+
+                        FlowerModel.updateFlowerById(id, flowerName, color, flowerType, price, occasion, shopId)
+                    }
+
+                    val resultMap = hashMapOf<String, String>()
+                    resultMap["message"] = "update flower by id"
+                    ctx.status(200).json(resultMap)
+                } else {
+                    val resultMap = hashMapOf<String, String>()
+                    resultMap["message"] = "update flower by id error, no this flower id"
+                    ctx.status(400).json(resultMap)
+                }
             }
-
-            val resultMap = hashMapOf<String, String>()
-            resultMap["message"] = "update flower by id"
-            ctx.status(200).json(resultMap)
         }
 
         fun deleteFlowerById(ctx: Context) {
             val id = ctx.pathParam("id")
             if (id.isNotEmpty()) {
-                FlowerModel.deleteFlowerById(id)
-            }
+                val flowerFromDB = FlowerModel.getFlowerById(id)
+                if (flowerFromDB.isNotEmpty()) {
+                    FlowerModel.deleteFlowerById(id)
 
-            val resultMap = hashMapOf<String, String>()
-            resultMap["message"] = "delete flower by id"
-            ctx.status(200).json(resultMap)
+                    val resultMap = hashMapOf<String, String>()
+                    resultMap["message"] = "delete flower by id"
+                    ctx.status(200).json(resultMap)
+                } else {
+                    val resultMap = hashMapOf<String, String>()
+                    resultMap["message"] = "delete flower by id error, no this flower id"
+                    ctx.status(400).json(resultMap)
+                }
+            }
         }
     }
 }

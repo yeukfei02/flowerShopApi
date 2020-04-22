@@ -1,0 +1,335 @@
+{
+	"info": {
+		"_postman_id": "7a6388ba-10ea-483d-b91c-ff026a42eb06",
+		"name": "flowerShopApi",
+		"description": "flowerShopApi",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "flower",
+			"item": [
+				{
+					"name": "/create-flower",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"flowerName\": \"flower222\",\n\t\"color\": \"yellow\",\n\t\"flowerType\": \"test3\",\n\t\"price\": 23223232.1,\n\t\"occasion\": \"new year\",\n\t\"shopId\": 2\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:7000/api/flower/create-flower",
+							"host": [
+								"localhost"
+							],
+							"port": "7000",
+							"path": [
+								"api",
+								"flower",
+								"create-flower"
+							]
+						},
+						"description": "/create-flower"
+					},
+					"response": []
+				},
+				{
+					"name": "/flower",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:7000/api/flower",
+							"host": [
+								"localhost"
+							],
+							"port": "7000",
+							"path": [
+								"api",
+								"flower"
+							]
+						},
+						"description": "/flower"
+					},
+					"response": []
+				},
+				{
+					"name": "/flower/{id}",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:7000/api/flower/1",
+							"host": [
+								"localhost"
+							],
+							"port": "7000",
+							"path": [
+								"api",
+								"flower",
+								"1"
+							]
+						},
+						"description": "/flower/{id}"
+					},
+					"response": []
+				},
+				{
+					"name": "/flower/{id}",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"flowerName\": \"flower1\",\n\t\"color\": \"blue\",\n\t\"flowerType\": \"test1\",\n\t\"price\": 10.12,\n\t\"occasion\": \"christmas\",\n\t\"shopId\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:7000/api/flower/1",
+							"host": [
+								"localhost"
+							],
+							"port": "7000",
+							"path": [
+								"api",
+								"flower",
+								"1"
+							]
+						},
+						"description": "/flower/{id}"
+					},
+					"response": []
+				},
+				{
+					"name": "/flower/{id}",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:7000/api/flower/1",
+							"host": [
+								"localhost"
+							],
+							"port": "7000",
+							"path": [
+								"api",
+								"flower",
+								"1"
+							]
+						},
+						"description": "/flower/{id}"
+					},
+					"response": []
+				}
+			],
+			"description": "flower",
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "shop",
+			"item": [
+				{
+					"name": "/create-shop",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"shopName\": \"shop3\",\n\t\"phone\": \"99993333\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:7000/api/shop/create-shop",
+							"host": [
+								"localhost"
+							],
+							"port": "7000",
+							"path": [
+								"api",
+								"shop",
+								"create-shop"
+							]
+						},
+						"description": "/create-shop"
+					},
+					"response": []
+				},
+				{
+					"name": "/shop",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:7000/api/shop",
+							"host": [
+								"localhost"
+							],
+							"port": "7000",
+							"path": [
+								"api",
+								"shop"
+							]
+						},
+						"description": "/shop"
+					},
+					"response": []
+				},
+				{
+					"name": "/shop/{id}",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:7000/api/shop/1",
+							"host": [
+								"localhost"
+							],
+							"port": "7000",
+							"path": [
+								"api",
+								"shop",
+								"1"
+							]
+						},
+						"description": "/shop/{id}"
+					},
+					"response": []
+				},
+				{
+					"name": "/shop/{id}",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"shopName\": \"shop11111\",\n\t\"phone\": \"88889999\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:7000/api/shop/1",
+							"host": [
+								"localhost"
+							],
+							"port": "7000",
+							"path": [
+								"api",
+								"shop",
+								"1"
+							]
+						},
+						"description": "/shop/{id}"
+					},
+					"response": []
+				},
+				{
+					"name": "/shop/{id}",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:7000/api/shop/1",
+							"host": [
+								"localhost"
+							],
+							"port": "7000",
+							"path": [
+								"api",
+								"shop",
+								"1"
+							]
+						},
+						"description": "/shop/{id}"
+					},
+					"response": []
+				}
+			],
+			"description": "shop",
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}

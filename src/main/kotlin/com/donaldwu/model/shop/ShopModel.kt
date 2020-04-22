@@ -6,6 +6,7 @@ import com.donaldwu.schema.shop.Shops
 import me.liuwj.ktorm.dsl.eq
 import me.liuwj.ktorm.entity.add
 import me.liuwj.ktorm.entity.find
+import me.liuwj.ktorm.entity.isNotEmpty
 import me.liuwj.ktorm.entity.sequenceOf
 
 class ShopModel {
@@ -24,27 +25,27 @@ class ShopModel {
         fun getAllShop(): List<Map<String, Any>> {
             val resultList = arrayListOf<Map<String, Any>>()
 
-            for (shop in sequence) {
-                val testMap = hashMapOf<String, Any>()
-                testMap["shopId"] = shop.shopId
-                testMap["shopName"] = shop.shopName
-                testMap["phone"] = shop.phone
+            if (sequence.isNotEmpty()) {
+                for (shop in sequence) {
+                    val testMap = hashMapOf<String, Any>()
+                    testMap["shopId"] = shop.shopId
+                    testMap["shopName"] = shop.shopName
+                    testMap["phone"] = shop.phone
 
-                val formattedCreatedBy = Common.getFormattedDateTime(shop.createdBy)
-                testMap["createdBy"] = formattedCreatedBy
+                    val formattedCreatedBy = Common.getFormattedDateTime(shop.createdBy)
+                    testMap["createdBy"] = formattedCreatedBy
 
-                val formattedUpdatedBy = Common.getFormattedDateTime(shop.updatedBy)
-                testMap["updatedBy"] = formattedUpdatedBy
-                resultList.add(testMap)
+                    val formattedUpdatedBy = Common.getFormattedDateTime(shop.updatedBy)
+                    testMap["updatedBy"] = formattedUpdatedBy
+                    resultList.add(testMap)
+                }
             }
 
             return resultList
         }
 
         fun getShopById(id: String): Map<String, Any> {
-            val shop = sequence.find {
-                it.shopId eq id.toInt()
-            }
+            val shop = sequence.find { it.shopId eq id.toInt() }
 
             val testMap = hashMapOf<String, Any>()
             if (shop != null) {
@@ -61,12 +62,18 @@ class ShopModel {
             return testMap
         }
 
-        fun updateShopById(id: String) {
-
+        fun updateShopById(id: String, shopName: String, phone: String) {
+            val shop = sequence.find { it.shopId eq id.toInt() }
+            if (shop != null) {
+                shop.shopName = shopName
+                shop.phone = phone
+                shop.flushChanges()
+            }
         }
 
         fun deleteShopById(id: String) {
-
+            val shop = sequence.find { it.shopId eq id.toInt() }
+            shop?.delete()
         }
     }
 }
