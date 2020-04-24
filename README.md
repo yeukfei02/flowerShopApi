@@ -10,7 +10,7 @@ flowerShopApi
 ## Testing and run:
 
 ```
-// build
+// build jar
 $ ./gradlew stage --warning-mode all
 
 // start project - run Main.kt
