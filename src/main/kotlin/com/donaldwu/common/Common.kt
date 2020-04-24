@@ -13,11 +13,11 @@ class Common {
     companion object {
         fun connectDataBase(): Database {
             val dotenv = dotenv()
-            val host = dotenv["HOST"]
-            val portNumber = dotenv["PORT_NUMBER"]
-            val userName = dotenv["USERNAME"]
-            val dbName = dotenv["DB_NAME"]
-            val dbPassword = dotenv["DB_PASSWORD"]
+            val host = System.getenv("HOST") ?: dotenv["HOST"]
+            val portNumber = System.getenv("PORT_NUMBER") ?: dotenv["PORT_NUMBER"]
+            val userName = System.getenv("USERNAME") ?: dotenv["USERNAME"]
+            val dbName = System.getenv("DB_NAME") ?: dotenv["DB_NAME"]
+            val dbPassword = System.getenv("DB_PASSWORD") ?: dotenv["DB_PASSWORD"]
 
             return Database.connect(
                 url = "jdbc:postgresql://$host:$portNumber/$dbName",
