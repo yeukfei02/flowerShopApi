@@ -3,7 +3,7 @@ plugins {
     id 'org.jetbrains.kotlin.jvm' version '1.3.72'
 }
 
-group 'org.example'
+group 'com.donaldwu'
 version '1.0.0'
 
 repositories {
@@ -30,12 +30,16 @@ compileTestKotlin {
     kotlinOptions.jvmTarget = "1.8"
 }
 
-task stage {
-    dependsOn build
-}
-
 jar {
     manifest {
-        attributes 'Main-Class': 'com.donaldwu.main'
+        attributes(
+                'Main-Class': 'com.donaldwu.main.Mainkt'
+        )
     }
 }
+
+//test {
+//    useJUnitPlatform()
+//}
+
+task stage(dependsOn: ['build', 'jar'])
