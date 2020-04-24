@@ -6,11 +6,12 @@ plugins {
 apply plugin: 'application'
 mainClassName = "com.donaldwu.main.MainKt"
 
-group 'com.donaldwu.main'
+group 'com.donaldwu'
 version '1.0.0-SNAPSHOT'
 
 repositories {
     mavenCentral()
+    jcenter()
 }
 
 dependencies {
@@ -34,16 +35,11 @@ compileTestKotlin {
 }
 
 jar {
-    baseName = 'flowerShopApi'
-    version = '1.0.0-SNAPSHOT'
     manifest {
         attributes(
-                'Class-Path': configurations.compile.collect { it.getName() }.join(' '),
                 'Main-Class': 'com.donaldwu.main.MainKt'
         )
     }
-
-    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
 }
 
 //test {
