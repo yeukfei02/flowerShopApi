@@ -1,12 +1,11 @@
 package com.donaldwu.model.shop
 
 import com.donaldwu.common.Common
-import com.donaldwu.schema.shop.Shop
-import com.donaldwu.schema.shop.Shops
-import me.liuwj.ktorm.dsl.eq
+import com.donaldwu.tableinterface.shop.Shop
+import com.donaldwu.table.shop.Shops
+import me.liuwj.ktorm.dsl.*
 import me.liuwj.ktorm.entity.add
 import me.liuwj.ktorm.entity.find
-import me.liuwj.ktorm.entity.isNotEmpty
 import me.liuwj.ktorm.entity.sequenceOf
 
 class ShopModel {
@@ -25,20 +24,24 @@ class ShopModel {
         fun getAllShop(): List<Map<String, Any>> {
             val resultList = arrayListOf<Map<String, Any>>()
 
-            if (sequence.isNotEmpty()) {
-                for (shop in sequence) {
-                    val testMap = hashMapOf<String, Any>()
-                    testMap["shopId"] = shop.shopId
-                    testMap["shopName"] = shop.shopName
-                    testMap["phone"] = shop.phone
+            val shops = database
+                            .from(Shops)
+                            .select()
+                            .orderBy(Shops.shopId.asc())
+                            .map { row -> Shops.createEntity(row) }
 
-                    val formattedCreatedBy = Common.getFormattedDateTime(shop.createdBy)
-                    testMap["createdBy"] = formattedCreatedBy
+            shops.forEach {
+                val testMap = hashMapOf<String, Any>()
+                testMap["shopId"] = it.shopId
+                testMap["shopName"] = it.shopName
+                testMap["phone"] = it.phone
 
-                    val formattedUpdatedBy = Common.getFormattedDateTime(shop.updatedBy)
-                    testMap["updatedBy"] = formattedUpdatedBy
-                    resultList.add(testMap)
-                }
+                val formattedCreatedBy = Common.getFormattedDateTime(it.createdBy)
+                testMap["createdBy"] = formattedCreatedBy
+
+                val formattedUpdatedBy = Common.getFormattedDateTime(it.updatedBy)
+                testMap["updatedBy"] = formattedUpdatedBy
+                resultList.add(testMap)
             }
 
             return resultList

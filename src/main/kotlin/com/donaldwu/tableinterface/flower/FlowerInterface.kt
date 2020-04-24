@@ -1,4 +1,4 @@
-package com.donaldwu.schema.flower
+package com.donaldwu.tableinterface.flower
 
 import me.liuwj.ktorm.entity.Entity
 import java.time.LocalDateTime
