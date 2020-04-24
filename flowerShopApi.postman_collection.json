@@ -7,168 +7,6 @@
 	},
 	"item": [
 		{
-			"name": "flower",
-			"item": [
-				{
-					"name": "/create-flower",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n\t\"flowerName\": \"flower222\",\n\t\"color\": \"yellow\",\n\t\"flowerType\": \"test3\",\n\t\"price\": 23223232.1,\n\t\"occasion\": \"new year\",\n\t\"shopId\": 2\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "localhost:7000/api/flower/create-flower",
-							"host": [
-								"localhost"
-							],
-							"port": "7000",
-							"path": [
-								"api",
-								"flower",
-								"create-flower"
-							]
-						},
-						"description": "/create-flower"
-					},
-					"response": []
-				},
-				{
-					"name": "/flower",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "localhost:7000/api/flower",
-							"host": [
-								"localhost"
-							],
-							"port": "7000",
-							"path": [
-								"api",
-								"flower"
-							]
-						},
-						"description": "/flower"
-					},
-					"response": []
-				},
-				{
-					"name": "/flower/{id}",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "localhost:7000/api/flower/1",
-							"host": [
-								"localhost"
-							],
-							"port": "7000",
-							"path": [
-								"api",
-								"flower",
-								"1"
-							]
-						},
-						"description": "/flower/{id}"
-					},
-					"response": []
-				},
-				{
-					"name": "/flower/{id}",
-					"request": {
-						"method": "PATCH",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n\t\"flowerName\": \"flower1\",\n\t\"color\": \"blue\",\n\t\"flowerType\": \"test1\",\n\t\"price\": 10.12,\n\t\"occasion\": \"christmas\",\n\t\"shopId\": 1\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "localhost:7000/api/flower/1",
-							"host": [
-								"localhost"
-							],
-							"port": "7000",
-							"path": [
-								"api",
-								"flower",
-								"1"
-							]
-						},
-						"description": "/flower/{id}"
-					},
-					"response": []
-				},
-				{
-					"name": "/flower/{id}",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "localhost:7000/api/flower/1",
-							"host": [
-								"localhost"
-							],
-							"port": "7000",
-							"path": [
-								"api",
-								"flower",
-								"1"
-							]
-						},
-						"description": "/flower/{id}"
-					},
-					"response": []
-				}
-			],
-			"description": "flower",
-			"protocolProfileBehavior": {}
-		},
-		{
 			"name": "shop",
 			"item": [
 				{
@@ -178,7 +16,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"shopName\": \"shop3\",\n\t\"phone\": \"99993333\"\n}",
+							"raw": "{\n\t\"shopName\": \"shop1\",\n\t\"phone\": \"99991111\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -328,6 +166,168 @@
 				}
 			],
 			"description": "shop",
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "flower",
+			"item": [
+				{
+					"name": "/create-flower",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"flowerName\": \"flower1\",\n\t\"color\": \"yellow\",\n\t\"flowerType\": \"test\",\n\t\"price\": 23223232.1,\n\t\"occasion\": \"new year\",\n\t\"shopId\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:7000/api/flower/create-flower",
+							"host": [
+								"localhost"
+							],
+							"port": "7000",
+							"path": [
+								"api",
+								"flower",
+								"create-flower"
+							]
+						},
+						"description": "/create-flower"
+					},
+					"response": []
+				},
+				{
+					"name": "/flower",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:7000/api/flower",
+							"host": [
+								"localhost"
+							],
+							"port": "7000",
+							"path": [
+								"api",
+								"flower"
+							]
+						},
+						"description": "/flower"
+					},
+					"response": []
+				},
+				{
+					"name": "/flower/{id}",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:7000/api/flower/1",
+							"host": [
+								"localhost"
+							],
+							"port": "7000",
+							"path": [
+								"api",
+								"flower",
+								"1"
+							]
+						},
+						"description": "/flower/{id}"
+					},
+					"response": []
+				},
+				{
+					"name": "/flower/{id}",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"flowerName\": \"flower111\",\n\t\"color\": \"blue\",\n\t\"flowerType\": \"test1111\",\n\t\"price\": 110.11,\n\t\"occasion\": \"christmas\",\n\t\"shopId\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:7000/api/flower/1",
+							"host": [
+								"localhost"
+							],
+							"port": "7000",
+							"path": [
+								"api",
+								"flower",
+								"1"
+							]
+						},
+						"description": "/flower/{id}"
+					},
+					"response": []
+				},
+				{
+					"name": "/flower/{id}",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:7000/api/flower/1",
+							"host": [
+								"localhost"
+							],
+							"port": "7000",
+							"path": [
+								"api",
+								"flower",
+								"1"
+							]
+						},
+						"description": "/flower/{id}"
+					},
+					"response": []
+				}
+			],
+			"description": "flower",
 			"protocolProfileBehavior": {}
 		}
 	],
