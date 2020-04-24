@@ -7,7 +7,8 @@ import io.javalin.Javalin
 import io.javalin.apibuilder.ApiBuilder.*
 
 fun main() {
-    val app = Javalin.create().start(7000)
+    val port: Int = System.getenv("PORT")?.toIntOrNull() ?: 7000
+    val app = Javalin.create().start(port)
 
     app.routes {
         // main route

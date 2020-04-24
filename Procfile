@@ -1,0 +1,1 @@
+web: java -jar build/libs/flowerShopApi-1.0.0.jar
