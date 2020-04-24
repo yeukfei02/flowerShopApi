@@ -1,1 +1,1 @@
-web: java -jar build/libs/flower-shop-api.jar
+web: java -jar build/libs/flowerShopApi.jar
