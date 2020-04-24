@@ -33,3 +33,9 @@ compileTestKotlin {
 task stage {
     dependsOn build
 }
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'com.donaldwu.main'
+    }
+}
