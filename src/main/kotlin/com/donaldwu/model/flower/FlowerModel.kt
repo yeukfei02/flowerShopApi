@@ -1,12 +1,11 @@
 package com.donaldwu.model.flower
 
 import com.donaldwu.common.Common
-import com.donaldwu.schema.flower.Flower
-import com.donaldwu.schema.flower.Flowers
-import me.liuwj.ktorm.dsl.eq
+import com.donaldwu.tableinterface.flower.Flower
+import com.donaldwu.table.flower.Flowers
+import me.liuwj.ktorm.dsl.*
 import me.liuwj.ktorm.entity.add
 import me.liuwj.ktorm.entity.find
-import me.liuwj.ktorm.entity.isNotEmpty
 import me.liuwj.ktorm.entity.sequenceOf
 
 class FlowerModel {
@@ -30,24 +29,28 @@ class FlowerModel {
         fun getAllFlower(): List<Map<String, Any>> {
             val resultList = arrayListOf<Map<String, Any>>()
 
-            if (sequence.isNotEmpty()) {
-                for (flower in sequence) {
-                    val testMap = hashMapOf<String, Any>()
-                    testMap["flowerId"] = flower.flowerId
-                    testMap["flowerName"] = flower.flowerName
-                    testMap["color"] = flower.color
-                    testMap["flowerType"] = flower.flowerType
-                    testMap["price"] = flower.price
-                    testMap["occasion"] = flower.occasion
-                    testMap["shopId"] = flower.shopId
+            val flowers = database
+                            .from(Flowers)
+                            .select()
+                            .orderBy(Flowers.flowerId.asc())
+                            .map { row -> Flowers.createEntity(row) }
 
-                    val formattedCreatedBy = Common.getFormattedDateTime(flower.createdBy)
-                    testMap["createdBy"] = formattedCreatedBy
+            flowers.forEach {
+                val testMap = hashMapOf<String, Any>()
+                testMap["flowerId"] = it.flowerId
+                testMap["flowerName"] = it.flowerName
+                testMap["color"] = it.color
+                testMap["flowerType"] = it.flowerType
+                testMap["price"] = it.price
+                testMap["occasion"] = it.occasion
+                testMap["shopId"] = it.shopId
 
-                    val formattedUpdatedBy = Common.getFormattedDateTime(flower.updatedBy)
-                    testMap["updatedBy"] = formattedUpdatedBy
-                    resultList.add(testMap)
-                }
+                val formattedCreatedBy = Common.getFormattedDateTime(it.createdBy)
+                testMap["createdBy"] = formattedCreatedBy
+
+                val formattedUpdatedBy = Common.getFormattedDateTime(it.updatedBy)
+                testMap["updatedBy"] = formattedUpdatedBy
+                resultList.add(testMap)
             }
 
             return resultList

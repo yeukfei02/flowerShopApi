@@ -1,5 +1,6 @@
-package com.donaldwu.schema.shop
+package com.donaldwu.table.shop
 
+import com.donaldwu.tableinterface.shop.Shop
 import me.liuwj.ktorm.schema.Table
 import me.liuwj.ktorm.schema.datetime
 import me.liuwj.ktorm.schema.int

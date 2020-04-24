@@ -9,8 +9,8 @@ import io.javalin.apibuilder.ApiBuilder.*
 fun main() {
     val app = Javalin.create().start(7000)
 
-    // main route
     app.routes {
+        // main route
         path("/") {
             get {
                 MainController.getMain(it)
