@@ -6,8 +6,8 @@ plugins {
 apply plugin: 'application'
 mainClassName = "com.donaldwu.main.MainKt"
 
-group 'com.donaldwu'
-version '1.0.0'
+group 'com.donaldwu.main'
+version '1.0.0-SNAPSHOT'
 
 repositories {
     mavenCentral()
@@ -34,6 +34,8 @@ compileTestKotlin {
 }
 
 jar {
+    baseName = 'flowerShopApi'
+    version = '1.0.0-SNAPSHOT'
     manifest {
         attributes(
                 'Class-Path': configurations.compile.collect { it.getName() }.join(' '),
