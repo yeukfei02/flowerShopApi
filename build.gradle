@@ -36,9 +36,12 @@ compileTestKotlin {
 jar {
     manifest {
         attributes(
+                'Class-Path': configurations.compile.collect { it.getName() }.join(' '),
                 'Main-Class': 'com.donaldwu.main.MainKt'
         )
     }
+
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
 }
 
 //test {
