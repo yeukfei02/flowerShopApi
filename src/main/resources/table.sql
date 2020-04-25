@@ -3,12 +3,14 @@ create table shop (
   shopId serial primary key,
   shopName varchar(255) not null,
   phone varchar(255) not null,
+  address varchar(255) not null,
   createdBy timestamp not null default CURRENT_TIMESTAMP,
   updatedBy timestamp not null default CURRENT_TIMESTAMP
 );
 
 create table flower (
   flowerId serial primary key,
+  image text not null,
   flowerName varchar(255) not null,
   color varchar(255) not null,
   flowerType varchar(255) not null,

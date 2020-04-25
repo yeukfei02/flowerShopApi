@@ -13,9 +13,11 @@ class FlowerModel {
         private val database = Common.connectDataBase()
         private val sequence = database.sequenceOf(Flowers)
 
-        fun createFlower(flowerName: String, color: String, flowerType: String,
-                         price: Double, occasion: String, shopId: Int) {
+        fun createFlower(image: String, flowerName: String, color: String,
+                         flowerType: String, price: Double, occasion: String,
+                         shopId: Int) {
             val flower = Flower {
+                this.image = image
                 this.flowerName = flowerName
                 this.color = color
                 this.flowerType = flowerType
@@ -38,6 +40,7 @@ class FlowerModel {
             flowers.forEach {
                 val testMap = hashMapOf<String, Any>()
                 testMap["flowerId"] = it.flowerId
+                testMap["image"] = it.image
                 testMap["flowerName"] = it.flowerName
                 testMap["color"] = it.color
                 testMap["flowerType"] = it.flowerType
@@ -62,6 +65,7 @@ class FlowerModel {
             val testMap = hashMapOf<String, Any>()
             if (flower != null) {
                 testMap["flowerId"] = flower.flowerId
+                testMap["image"] = flower.image
                 testMap["flowerName"] = flower.flowerName
                 testMap["color"] = flower.color
                 testMap["flowerType"] = flower.flowerType
@@ -78,10 +82,12 @@ class FlowerModel {
             return testMap
         }
 
-        fun updateFlowerById(id: String, flowerName: String, color: String, flowerType: String,
-                             price: Double, occasion: String, shopId: Int) {
+        fun updateFlowerById(id: String, image: String, flowerName: String,
+                             color: String, flowerType: String, price: Double,
+                             occasion: String, shopId: Int) {
             val flower = sequence.find { it.flowerId eq id.toInt() }
             if (flower != null) {
+                flower.image = image
                 flower.flowerName = flowerName
                 flower.color = color
                 flower.flowerType = flowerType

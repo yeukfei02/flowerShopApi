@@ -5,6 +5,7 @@ import me.liuwj.ktorm.schema.*
 
 object Flowers: Table<Flower>("flower") {
     val flowerId by int("flowerId").primaryKey().bindTo { it.flowerId }
+    val image by text("image").bindTo { it.image }
     val flowerName by varchar("flowerName").bindTo { it.flowerName }
     val color by varchar("color").bindTo { it.color }
     val flowerType by varchar("flowerType").bindTo { it.flowerType }
