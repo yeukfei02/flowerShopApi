@@ -13,7 +13,8 @@ class ShopController {
 
                 val shopName = bodyDataMap["shopName"].toString()
                 val phone = bodyDataMap["phone"].toString()
-                ShopModel.createShop(shopName, phone)
+                val address = bodyDataMap["address"].toString()
+                ShopModel.createShop(shopName, phone, address)
             }
 
             val resultMap = hashMapOf<String, String>()
@@ -56,8 +57,9 @@ class ShopController {
 
                         val shopName = bodyDataMap["shopName"].toString()
                         val phone = bodyDataMap["phone"].toString()
+                        val address = bodyDataMap["address"].toString()
 
-                        ShopModel.updateShopById(id, shopName, phone)
+                        ShopModel.updateShopById(id, shopName, phone, address)
                     }
 
                     val resultMap = hashMapOf<String, String>()

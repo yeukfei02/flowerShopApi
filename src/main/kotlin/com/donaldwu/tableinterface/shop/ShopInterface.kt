@@ -8,6 +8,7 @@ interface Shop: Entity<Shop> {
     val shopId: Int
     var shopName: String
     var phone: String
+    var address: String
     val createdBy: LocalDateTime
     val updatedBy: LocalDateTime
 }

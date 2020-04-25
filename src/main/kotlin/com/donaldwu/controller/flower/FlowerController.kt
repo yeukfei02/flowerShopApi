@@ -12,6 +12,7 @@ class FlowerController {
             if (body.isNotEmpty()) {
                 val bodyDataMap = Common.getBodyData(body)
 
+                val image = bodyDataMap["image"].toString()
                 val flowerName = bodyDataMap["flowerName"].toString()
                 val color = bodyDataMap["color"].toString()
                 val flowerType = bodyDataMap["flowerType"].toString()
@@ -21,7 +22,7 @@ class FlowerController {
 
                 val shop = ShopModel.getShopById(shopId.toString())
                 if (shop.isNotEmpty()) {
-                    FlowerModel.createFlower(flowerName, color, flowerType, price, occasion, shopId)
+                    FlowerModel.createFlower(image, flowerName, color, flowerType, price, occasion, shopId)
 
                     val resultMap = hashMapOf<String, String>()
                     resultMap["message"] = "create flower success"
@@ -36,7 +37,6 @@ class FlowerController {
 
         fun getAllFlower(ctx: Context) {
             val flowerList = FlowerModel.getAllFlower()
-
             val resultMap = hashMapOf<String, Any>()
             resultMap["message"] = "get all flower"
             resultMap["flowers"] = flowerList
@@ -67,6 +67,7 @@ class FlowerController {
                     if (body.isNotEmpty()) {
                         val bodyDataMap = Common.getBodyData(body)
 
+                        val image = bodyDataMap["image"].toString()
                         val flowerName = bodyDataMap["flowerName"].toString()
                         val color = bodyDataMap["color"].toString()
                         val flowerType = bodyDataMap["flowerType"].toString()
@@ -74,8 +75,9 @@ class FlowerController {
                         val occasion = bodyDataMap["occasion"].toString()
                         val shopId = bodyDataMap["shopId"].toString().substring(0, bodyDataMap["shopId"].toString().indexOf(".")).toInt()
 
-
-                        FlowerModel.updateFlowerById(id, flowerName, color, flowerType, price, occasion, shopId)
+                        FlowerModel.updateFlowerById(id, image, flowerName,
+                            color, flowerType, price,
+                            occasion, shopId)
                     }
 
                     val resultMap = hashMapOf<String, String>()

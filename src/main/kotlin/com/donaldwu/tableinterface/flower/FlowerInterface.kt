@@ -6,6 +6,7 @@ import java.time.LocalDateTime
 interface Flower: Entity<Flower> {
     companion object : Entity.Factory<Flower>()
     val flowerId: Int
+    var image: String
     var flowerName: String
     var color: String
     var flowerType: String
