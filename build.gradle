@@ -21,6 +21,7 @@ dependencies {
     implementation "me.liuwj.ktorm:ktorm-core:2.7.2"
     implementation "me.liuwj.ktorm:ktorm-support-postgresql:2.7.2"
     implementation "org.postgresql:postgresql:42.2.10"
+    implementation "com.squareup.okhttp3:okhttp:4.5.0"
     testImplementation group: 'junit', name: 'junit', version: '4.12'
 }
 
