@@ -36,7 +36,14 @@ class FlowerController {
         }
 
         fun getAllFlower(ctx: Context) {
-            val flowerList = FlowerModel.getAllFlower()
+            val flowerName = ctx.queryParam("flowerName")
+            val color = ctx.queryParam("color")
+            val flowerType = ctx.queryParam("flowerType")
+            val price = ctx.queryParam("price")
+            val occasion = ctx.queryParam("occasion")
+            val page = ctx.queryParam("page")
+
+            val flowerList = FlowerModel.getAllFlower(flowerName, color, flowerType, price, occasion, page)
             val resultMap = hashMapOf<String, Any>()
             resultMap["message"] = "get all flower"
             resultMap["flowers"] = flowerList

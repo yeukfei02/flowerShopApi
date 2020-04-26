@@ -23,7 +23,12 @@ class ShopController {
         }
 
         fun getAllShop(ctx: Context) {
-            val shopList = ShopModel.getAllShop()
+            val shopName = ctx.queryParam("shopName")
+            val phone = ctx.queryParam("phone")
+            val address = ctx.queryParam("address")
+            val page = ctx.queryParam("page")
+
+            val shopList = ShopModel.getAllShop(shopName, phone, address, page)
 
             val resultMap = hashMapOf<String, Any>()
             resultMap["message"] = "get all shop"

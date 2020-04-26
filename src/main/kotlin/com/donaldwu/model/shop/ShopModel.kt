@@ -22,14 +22,41 @@ class ShopModel {
             sequence.add(shop)
         }
 
-        fun getAllShop(): List<Map<String, Any>> {
+        fun getAllShop(shopName: String?, phone: String?, address: String?, page: String?): List<Map<String, Any>> {
             val resultList = arrayListOf<Map<String, Any>>()
 
-            val shops = database
-                            .from(Shops)
-                            .select()
-                            .orderBy(Shops.shopId.asc())
-                            .map { row -> Shops.createEntity(row) }
+            var shops: List<Shop>
+            if (page == null) {
+                shops = database
+                        .from(Shops)
+                        .select()
+                        .orderBy(Shops.shopId.asc())
+                        .map { row -> Shops.createEntity(row) }
+            } else {
+                var offset = 0
+                if (page.toInt() > 1) {
+                    offset = page.toInt() * 10 - 10
+                }
+                shops = database
+                        .from(Shops)
+                        .select()
+                        .limit(offset, 10)
+                        .orderBy(Shops.shopId.asc())
+                        .map { row -> Shops.createEntity(row) }
+            }
+
+            if (shopName != null || phone != null || address != null) {
+                shops = database
+                        .from(Shops)
+                        .select()
+                        .where {
+                            (Shops.shopName eq "$shopName") or
+                            (Shops.phone eq "$phone") or
+                            (Shops.address eq "$address")
+                        }
+                        .orderBy(Shops.shopId.asc())
+                        .map { row -> Shops.createEntity(row) }
+            }
 
             shops.forEach {
                 val testMap = hashMapOf<String, Any>()
