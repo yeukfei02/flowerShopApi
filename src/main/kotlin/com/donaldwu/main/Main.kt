@@ -8,7 +8,9 @@ import io.javalin.apibuilder.ApiBuilder.*
 
 fun main() {
     val port: Int = System.getenv("PORT")?.toIntOrNull() ?: 7000
-    val app = Javalin.create().start(port)
+    val app = Javalin.create{
+        it.enableCorsForAllOrigins()
+    }.start(port)
 
     app.routes {
         // main route
