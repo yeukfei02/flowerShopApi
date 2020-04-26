@@ -25,35 +25,34 @@ class ShopModel {
         fun getAllShop(shopName: String?, phone: String?, address: String?, page: String?): List<Map<String, Any>> {
             val resultList = arrayListOf<Map<String, Any>>()
 
-            var shops: List<Shop>
-            if (page == null) {
+            var shops = listOf<Shop>()
+            if (shopName == null && phone == null && address == null && page == null) {
                 shops = database
                         .from(Shops)
                         .select()
                         .orderBy(Shops.shopId.asc())
                         .map { row -> Shops.createEntity(row) }
-            } else {
+            }
+            if (shopName != null || phone != null || address != null || page != null) {
                 var offset = 0
-                if (page.toInt() > 1) {
+                if (page != null && page.toInt() > 1) {
                     offset = page.toInt() * 10 - 10
                 }
                 shops = database
                         .from(Shops)
                         .select()
-                        .limit(offset, 10)
-                        .orderBy(Shops.shopId.asc())
-                        .map { row -> Shops.createEntity(row) }
-            }
-
-            if (shopName != null || phone != null || address != null) {
-                shops = database
-                        .from(Shops)
-                        .select()
-                        .where {
-                            (Shops.shopName eq "$shopName") or
-                            (Shops.phone eq "$phone") or
-                            (Shops.address eq "$address")
+                        .whereWithConditions {
+                            if (shopName != null) {
+                                it += (Shops.shopName like "%$shopName%")
+                            }
+                            if (phone != null) {
+                                it += (Shops.phone like "%$phone%")
+                            }
+                            if (address != null) {
+                                it += (Shops.address like "%$address%")
+                            }
                         }
+                        .limit(offset, 10)
                         .orderBy(Shops.shopId.asc())
                         .map { row -> Shops.createEntity(row) }
             }

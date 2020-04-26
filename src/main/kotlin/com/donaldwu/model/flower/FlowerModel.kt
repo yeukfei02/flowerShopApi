@@ -31,41 +31,46 @@ class FlowerModel {
         fun getAllFlower(flowerName: String?, color: String?, flowerType: String?, price: String?, occasion: String?, page: String?): List<Map<String, Any>> {
             val resultList = arrayListOf<Map<String, Any>>()
 
-            var flowers: List<Flower>
-            if (page == null) {
+            var flowers = listOf<Flower>()
+            if (flowerName == null && color == null && flowerType == null && price == null && occasion == null && page == null) {
                 flowers = database
                         .from(Flowers)
                         .select()
-                        .orderBy(Flowers.flowerId.asc())
-                        .map { row -> Flowers.createEntity(row) }
-            } else {
-                var offset = 0
-                if (page.toInt() > 1) {
-                    offset = page.toInt() * 10 - 10
-                }
-                flowers = database
-                        .from(Flowers)
-                        .select()
-                        .limit(offset, 10)
                         .orderBy(Flowers.flowerId.asc())
                         .map { row -> Flowers.createEntity(row) }
             }
+            if (flowerName != null || color != null || flowerType != null || price != null || occasion != null || page != null) {
+                var offset = 0
+                if (page!= null && page.toInt() > 1) {
+                    offset = page.toInt() * 10 - 10
+                }
 
-            if (flowerName != null || color != null || flowerType != null || price != null || occasion != null) {
                 var priceDouble = 0.0
                 if (price != null) {
                     priceDouble = price.toDouble()
                 }
+
                 flowers = database
                         .from(Flowers)
                         .select()
-                        .where {
-                            (Flowers.flowerName eq "$flowerName") or
-                            (Flowers.color eq "$color") or
-                            (Flowers.flowerType eq "$flowerType") or
-                            (Flowers.price lessEq(priceDouble)) or
-                            (Flowers.occasion eq "$occasion")
+                        .whereWithConditions {
+                            if (flowerName != null) {
+                                it += (Flowers.flowerName like "%$flowerName%")
+                            }
+                            if (color != null) {
+                                it += (Flowers.color like "%$color%")
+                            }
+                            if (flowerType != null) {
+                                it += (Flowers.flowerType like "%$flowerType%")
+                            }
+                            if (price != null) {
+                                it += (Flowers.price lessEq(priceDouble))
+                            }
+                            if (occasion != null) {
+                                it += (Flowers.occasion like "%$occasion%")
+                            }
                         }
+                        .limit(offset, 10)
                         .orderBy(Flowers.flowerId.asc())
                         .map { row -> Flowers.createEntity(row) }
             }
