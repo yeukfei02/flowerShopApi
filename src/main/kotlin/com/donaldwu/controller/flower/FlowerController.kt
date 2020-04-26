@@ -26,11 +26,11 @@ class FlowerController {
 
                     val resultMap = hashMapOf<String, String>()
                     resultMap["message"] = "create flower success"
-                    ctx.status(201).json(resultMap)
+                    ctx.status(201).header("Cache-Control", "public, max-age=31557600").json(resultMap)
                 } else {
                     val resultMap = hashMapOf<String, String>()
                     resultMap["message"] = "create flower fail, shopId does not exist"
-                    ctx.status(400).json(resultMap)
+                    ctx.status(400).header("Cache-Control", "public, max-age=31557600").json(resultMap)
                 }
             }
         }
@@ -40,7 +40,7 @@ class FlowerController {
             val resultMap = hashMapOf<String, Any>()
             resultMap["message"] = "get all flower"
             resultMap["flowers"] = flowerList
-            ctx.status(200).json(resultMap)
+            ctx.status(200).header("Cache-Control", "public, max-age=31557600").json(resultMap)
         }
 
         fun getFlowerById(ctx: Context) {
@@ -54,7 +54,7 @@ class FlowerController {
             val resultMap = hashMapOf<String, Any>()
             resultMap["message"] = "get flower by id"
             resultMap["flower"] = flower
-            ctx.status(200).json(resultMap)
+            ctx.status(200).header("Cache-Control", "public, max-age=31557600").json(resultMap)
         }
 
         fun updateFlowerById(ctx: Context) {
@@ -82,11 +82,11 @@ class FlowerController {
 
                     val resultMap = hashMapOf<String, String>()
                     resultMap["message"] = "update flower by id"
-                    ctx.status(200).json(resultMap)
+                    ctx.status(200).header("Cache-Control", "public, max-age=31557600").json(resultMap)
                 } else {
                     val resultMap = hashMapOf<String, String>()
                     resultMap["message"] = "update flower by id error, no this flower id"
-                    ctx.status(400).json(resultMap)
+                    ctx.status(400).header("Cache-Control", "public, max-age=31557600").json(resultMap)
                 }
             }
         }
@@ -100,11 +100,11 @@ class FlowerController {
 
                     val resultMap = hashMapOf<String, String>()
                     resultMap["message"] = "delete flower by id"
-                    ctx.status(200).json(resultMap)
+                    ctx.status(200).header("Cache-Control", "public, max-age=31557600").json(resultMap)
                 } else {
                     val resultMap = hashMapOf<String, String>()
                     resultMap["message"] = "delete flower by id error, no this flower id"
-                    ctx.status(400).json(resultMap)
+                    ctx.status(400).header("Cache-Control", "public, max-age=31557600").json(resultMap)
                 }
             }
         }
