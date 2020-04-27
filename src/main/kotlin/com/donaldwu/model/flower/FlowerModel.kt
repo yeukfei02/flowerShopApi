@@ -1,6 +1,7 @@
 package com.donaldwu.model.flower
 
 import com.donaldwu.common.Common
+import com.donaldwu.model.shop.ShopModel
 import com.donaldwu.tableinterface.flower.Flower
 import com.donaldwu.table.flower.Flowers
 import me.liuwj.ktorm.dsl.*
@@ -86,6 +87,11 @@ class FlowerModel {
                 testMap["occasion"] = it.occasion
                 testMap["shopId"] = it.shopId
 
+                val shop = ShopModel.getShopById(it.shopId.toString())
+                val shopTestMap = hashMapOf<String, Any>()
+                shopTestMap["shopName"] = shop["shopName"].toString()
+                testMap["shop"] = shopTestMap
+
                 val formattedCreatedBy = Common.getFormattedDateTime(it.createdBy)
                 testMap["createdBy"] = formattedCreatedBy
 
@@ -110,6 +116,11 @@ class FlowerModel {
                 testMap["price"] = flower.price
                 testMap["occasion"] = flower.occasion
                 testMap["shopId"] = flower.shopId
+
+                val shop = ShopModel.getShopById(flower.shopId.toString())
+                val shopTestMap = hashMapOf<String, Any>()
+                shopTestMap["shopName"] = shop["shopName"].toString()
+                testMap["shop"] = shopTestMap
 
                 val formattedCreatedBy = Common.getFormattedDateTime(flower.createdBy)
                 testMap["createdBy"] = formattedCreatedBy
