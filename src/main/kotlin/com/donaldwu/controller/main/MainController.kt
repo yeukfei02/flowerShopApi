@@ -7,7 +7,7 @@ class MainController {
         fun getMain(ctx: Context) {
             val resultMap = hashMapOf<String, String>()
             resultMap["message"] = "flowerShopApi"
-            ctx.status(200).header("Cache-Control", "public, max-age=31557600").json(resultMap)
+            ctx.status(200).json(resultMap)
         }
     }
 }
