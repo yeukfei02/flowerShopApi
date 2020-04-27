@@ -8,6 +8,7 @@ import me.liuwj.ktorm.schema.varchar
 
 object Shops: Table<Shop>("shop") {
     val shopId by int("shopId").primaryKey().bindTo { it.shopId }
+    val image by varchar("image").bindTo { it.image }
     val shopName by varchar("shopName").bindTo { it.shopName }
     val phone by varchar("phone").bindTo { it.phone }
     val address by varchar("address").bindTo { it.address }
