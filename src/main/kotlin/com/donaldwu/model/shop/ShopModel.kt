@@ -13,8 +13,9 @@ class ShopModel {
         private val database = Common.connectDataBase()
         private val sequence = database.sequenceOf(Shops)
 
-        fun createShop(shopName: String, phone: String, address: String) {
+        fun createShop(image: String, shopName: String, phone: String, address: String) {
             val shop = Shop {
+                this.image = image
                 this.shopName = shopName
                 this.phone = phone
                 this.address = address
@@ -60,6 +61,7 @@ class ShopModel {
             shops.forEach {
                 val testMap = hashMapOf<String, Any>()
                 testMap["shopId"] = it.shopId
+                testMap["image"] = it.image
                 testMap["shopName"] = it.shopName
                 testMap["phone"] = it.phone
                 testMap["address"] = it.address
@@ -81,6 +83,7 @@ class ShopModel {
             val testMap = hashMapOf<String, Any>()
             if (shop != null) {
                 testMap["shopId"] = shop.shopId
+                testMap["image"] = shop.image
                 testMap["shopName"] = shop.shopName
                 testMap["phone"] = shop.phone
                 testMap["address"] = shop.address
@@ -94,9 +97,10 @@ class ShopModel {
             return testMap
         }
 
-        fun updateShopById(id: String, shopName: String, phone: String, address: String) {
+        fun updateShopById(id: String, image: String, shopName: String, phone: String, address: String) {
             val shop = sequence.find { it.shopId eq id.toInt() }
             if (shop != null) {
+                shop.image = image
                 shop.shopName = shopName
                 shop.phone = phone
                 shop.address = address

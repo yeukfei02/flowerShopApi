@@ -11,10 +11,11 @@ class ShopController {
             if (body.isNotEmpty()) {
                 val bodyDataMap = Common.getBodyData(body)
 
+                val image = bodyDataMap["image"].toString()
                 val shopName = bodyDataMap["shopName"].toString()
                 val phone = bodyDataMap["phone"].toString()
                 val address = bodyDataMap["address"].toString()
-                ShopModel.createShop(shopName, phone, address)
+                ShopModel.createShop(image, shopName, phone, address)
             }
 
             val resultMap = hashMapOf<String, String>()
@@ -60,11 +61,12 @@ class ShopController {
                     if (body.isNotEmpty()) {
                         val bodyDataMap = Common.getBodyData(body)
 
+                        val image = bodyDataMap["image"].toString()
                         val shopName = bodyDataMap["shopName"].toString()
                         val phone = bodyDataMap["phone"].toString()
                         val address = bodyDataMap["address"].toString()
 
-                        ShopModel.updateShopById(id, shopName, phone, address)
+                        ShopModel.updateShopById(id, image, shopName, phone, address)
                     }
 
                     val resultMap = hashMapOf<String, String>()

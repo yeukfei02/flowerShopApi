@@ -1,6 +1,7 @@
 
 create table shop (
   shopId serial primary key,
+  image text not null,
   shopName varchar(255) not null,
   phone varchar(255) not null,
   address varchar(255) not null,
