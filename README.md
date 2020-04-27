@@ -1,6 +1,6 @@
 # flowerShopApi
 
-flowerShopApi
+Help you to record and find flower + shop
 
 ## Requirement:
 
