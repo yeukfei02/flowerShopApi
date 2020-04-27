@@ -20,7 +20,7 @@ class ShopController {
 
             val resultMap = hashMapOf<String, String>()
             resultMap["message"] = "create shop success"
-            ctx.status(201).header("Cache-Control", "public, max-age=31557600").json(resultMap)
+            ctx.status(201).json(resultMap)
         }
 
         fun getAllShop(ctx: Context) {
@@ -34,7 +34,7 @@ class ShopController {
             val resultMap = hashMapOf<String, Any>()
             resultMap["message"] = "get all shop"
             resultMap["shops"] = shopList
-            ctx.status(200).header("Cache-Control", "public, max-age=31557600").json(resultMap)
+            ctx.status(200).json(resultMap)
         }
 
         fun getShopById(ctx: Context) {
@@ -48,7 +48,7 @@ class ShopController {
             val resultMap = hashMapOf<String, Any>()
             resultMap["message"] = "get shop by id"
             resultMap["shop"] = shop
-            ctx.status(200).header("Cache-Control", "public, max-age=31557600").json(resultMap)
+            ctx.status(200).json(resultMap)
         }
 
         fun updateShopById(ctx: Context) {
@@ -71,11 +71,11 @@ class ShopController {
 
                     val resultMap = hashMapOf<String, String>()
                     resultMap["message"] = "update shop by id"
-                    ctx.status(200).header("Cache-Control", "public, max-age=31557600").json(resultMap)
+                    ctx.status(200).json(resultMap)
                 } else {
                     val resultMap = hashMapOf<String, String>()
                     resultMap["message"] = "update shop by id error, no this shop id"
-                    ctx.status(400).header("Cache-Control", "public, max-age=31557600").json(resultMap)
+                    ctx.status(400).json(resultMap)
                 }
             }
         }
@@ -89,11 +89,11 @@ class ShopController {
 
                     val resultMap = hashMapOf<String, String>()
                     resultMap["message"] = "delete shop by id"
-                    ctx.status(200).header("Cache-Control", "public, max-age=31557600").json(resultMap)
+                    ctx.status(200).json(resultMap)
                 } else {
                     val resultMap = hashMapOf<String, String>()
                     resultMap["message"] = "delete shop by id error, no this shop id"
-                    ctx.status(400).header("Cache-Control", "public, max-age=31557600").json(resultMap)
+                    ctx.status(400).json(resultMap)
                 }
             }
         }
