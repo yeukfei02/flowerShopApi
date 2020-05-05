@@ -7,7 +7,6 @@ documentation: https://documenter.getpostman.com/view/3827865/SzfCU5nA?version=l
 ## Requirement:
 
  - install java (1.8+)
- - install kotlin
 
 ## Testing and run:
 
