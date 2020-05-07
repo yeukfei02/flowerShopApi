@@ -19,7 +19,7 @@ $ java -jar build/libs/flowerShopApi-1.0.0.jar
 
 // start project - run Main.kt
 
-// run test case - run MainTest
+// run test case - run MainTest.kt
 ```
 
 open project in intellij idea
