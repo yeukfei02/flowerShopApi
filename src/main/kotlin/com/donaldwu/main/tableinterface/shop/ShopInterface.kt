@@ -1,4 +1,4 @@
-package com.donaldwu.tableinterface.shop
+package com.donaldwu.main.tableinterface.shop
 
 import me.liuwj.ktorm.entity.Entity
 import java.time.LocalDateTime

@@ -1,8 +1,8 @@
-package com.donaldwu.controller.flower
+package com.donaldwu.main.controller.flower
 
-import com.donaldwu.common.Common
-import com.donaldwu.model.flower.FlowerModel
-import com.donaldwu.model.shop.ShopModel
+import com.donaldwu.main.common.Common
+import com.donaldwu.main.model.flower.FlowerModel
+import com.donaldwu.main.model.shop.ShopModel
 import io.javalin.http.Context
 
 class FlowerController {
