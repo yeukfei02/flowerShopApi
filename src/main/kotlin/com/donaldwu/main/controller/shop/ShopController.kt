@@ -1,7 +1,7 @@
-package com.donaldwu.controller.shop
+package com.donaldwu.main.controller.shop
 
-import com.donaldwu.common.Common
-import com.donaldwu.model.shop.ShopModel
+import com.donaldwu.main.common.Common
+import com.donaldwu.main.model.shop.ShopModel
 import io.javalin.http.Context
 
 class ShopController {

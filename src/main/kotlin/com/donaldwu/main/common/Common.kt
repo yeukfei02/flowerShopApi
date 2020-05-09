@@ -1,4 +1,4 @@
-package com.donaldwu.common
+package com.donaldwu.main.common
 
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken

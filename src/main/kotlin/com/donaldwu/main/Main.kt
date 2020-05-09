@@ -1,8 +1,8 @@
 package com.donaldwu.main
 
-import com.donaldwu.controller.flower.FlowerController
-import com.donaldwu.controller.main.MainController
-import com.donaldwu.controller.shop.ShopController
+import com.donaldwu.main.controller.flower.FlowerController
+import com.donaldwu.main.controller.main.MainController
+import com.donaldwu.main.controller.shop.ShopController
 import io.javalin.Javalin
 import io.javalin.apibuilder.ApiBuilder.*
 

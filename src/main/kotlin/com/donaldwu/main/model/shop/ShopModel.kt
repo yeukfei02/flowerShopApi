@@ -1,8 +1,8 @@
-package com.donaldwu.model.shop
+package com.donaldwu.main.model.shop
 
-import com.donaldwu.common.Common
-import com.donaldwu.tableinterface.shop.Shop
-import com.donaldwu.table.shop.Shops
+import com.donaldwu.main.common.Common
+import com.donaldwu.main.tableinterface.shop.Shop
+import com.donaldwu.main.table.shop.Shops
 import me.liuwj.ktorm.dsl.*
 import me.liuwj.ktorm.entity.add
 import me.liuwj.ktorm.entity.find

@@ -1,4 +1,4 @@
-package com.donaldwu.controller.main
+package com.donaldwu.main.controller.main
 
 import io.javalin.http.Context
 

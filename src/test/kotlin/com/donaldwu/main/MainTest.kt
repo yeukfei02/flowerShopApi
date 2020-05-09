@@ -1,6 +1,6 @@
 package com.donaldwu.main
 
-import com.donaldwu.common.logger.Logger
+import com.donaldwu.main.common.logger.Logger
 import com.donaldwu.main.request.TestRequest
 import org.junit.Test
 import org.junit.Assert

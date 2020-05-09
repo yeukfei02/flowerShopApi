@@ -1,6 +1,6 @@
-package com.donaldwu.table.flower
+package com.donaldwu.main.table.flower
 
-import com.donaldwu.tableinterface.flower.Flower
+import com.donaldwu.main.tableinterface.flower.Flower
 import me.liuwj.ktorm.schema.*
 
 object Flowers: Table<Flower>("flower") {
