@@ -1,10 +1,9 @@
-package com.donaldwu.test.request
+package com.donaldwu.main.request
 
 import com.google.gson.JsonObject
-import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
 import okhttp3.Request
-import okhttp3.RequestBody
+import okhttp3.RequestBody.Companion.toRequestBody
 
 class TestRequest {
     companion object {
@@ -16,10 +15,7 @@ class TestRequest {
             data.addProperty("phone", "phone")
             data.addProperty("address", "test address")
 
-            val body: RequestBody = RequestBody.create(
-                "application/json; charset=utf-8".toMediaType(),
-                data.toString()
-            )
+            val body = data.toString().toRequestBody()
 
             val request: Request = Request.Builder()
                 .header("Content-type", "application/json")
@@ -68,10 +64,7 @@ class TestRequest {
             data.addProperty("phone", "phone123123")
             data.addProperty("address", "test address123")
 
-            val body: RequestBody = RequestBody.create(
-                "application/json; charset=utf-8".toMediaType(),
-                data.toString()
-            )
+            val body = data.toString().toRequestBody()
 
             val request: Request = Request.Builder()
                 .header("Content-type", "application/json")
@@ -95,10 +88,7 @@ class TestRequest {
             data.addProperty("occasion", "new year")
             data.addProperty("shopId", 1)
 
-            val body: RequestBody = RequestBody.create(
-                "application/json; charset=utf-8".toMediaType(),
-                data.toString()
-            )
+            val body = data.toString().toRequestBody()
 
             val request: Request = Request.Builder()
                 .header("Content-type", "application/json")
@@ -150,10 +140,7 @@ class TestRequest {
             data.addProperty("occasion", "new year123123")
             data.addProperty("shopId", 1)
 
-            val body: RequestBody = RequestBody.create(
-                "application/json; charset=utf-8".toMediaType(),
-                data.toString()
-            )
+            val body = data.toString().toRequestBody()
 
             val request: Request = Request.Builder()
                 .header("Content-type", "application/json")
