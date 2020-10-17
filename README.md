@@ -6,7 +6,7 @@ documentation: https://documenter.getpostman.com/view/3827865/SzfCU5nA?version=l
 
 ## Requirement:
 
- - install java (1.8+)
+- install java (1.8+)
 
 ## Testing and run:
 
@@ -28,51 +28,18 @@ open localhost:7000
 
 ## Docker:
 
-- Dockerfile
-
-build images and start container
 ```
-docker build -t <username>/flower-shop-api:<tag> .
-docker run -p 7000:7000 -d <username>/flower-shop-api:<tag>
-docker exec -it <containerId> /bin/bash
-docker logs <containerId>
-```
-
-check images and container
-```
-docker images
-docker ps
-docker ps -a
-```
-
-open localhost:7000
-
-- docker-compose.yml
-
-build images and start container
-```
-docker-compose build
-docker-compose up
-```
-
-build images and start container in one line
-```
+// build images and start container in one line
 docker-compose up -d --build
-```
 
-stop container
-```
-docker-compose stop
-```
+// go inside container
+docker exec -it <containerId> /bin/bash
 
-add tag to docker images
-```
-$ docker tag <imageId> <dockerHubUserName>/<imageName>:<tag>
-```
+// check container logs
+docker logs <containerId>
 
-push docker images to docker hub
-```
-$ docker push <dockerHubUserName>/<imageName>:<tag>
+// remove and stop container
+docker-compose down
 ```
 
 open localhost:7000
