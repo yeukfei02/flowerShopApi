@@ -2,15 +2,15 @@
 
 Help you to record and find flower + shop
 
-documentation: https://documenter.getpostman.com/view/3827865/SzfCU5nA?version=latest
+documentation: <https://documenter.getpostman.com/view/3827865/SzfCU5nA?version=latest>
 
-## Requirement:
+## Requirement
 
 - install java (1.8+)
 
-## Testing and run:
+## Testing and run
 
-```
+```zsh
 // build jar
 $ ./gradlew stage --warning-mode all
 
@@ -26,9 +26,9 @@ open project in intellij idea
 
 open localhost:7000
 
-## Docker:
+## Docker
 
-```
+```zsh
 // build images and start container in one line
 docker-compose up -d --build
 
