@@ -17,9 +17,11 @@ $ ./gradlew stage --warning-mode all
 // run jar
 $ java -jar build/libs/flowerShopApi-1.0.0.jar
 
-// start project - run Main.kt
+// start project
+- run Main.kt
 
-// run test case - run MainTest.kt
+// run test case
+- run MainTest.kt
 ```
 
 open project in intellij idea
