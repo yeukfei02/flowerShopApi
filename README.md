@@ -11,8 +11,11 @@ documentation: <https://documenter.getpostman.com/view/3827865/SzfCU5nA?version=
 ## Testing and run
 
 ```zsh
+// show gradle tasks
+$ ./gradlew tasks --all
+
 // build jar
-$ ./gradlew stage --warning-mode all
+$ ./gradlew build
 
 // run jar
 $ java -jar build/libs/flowerShopApi-1.0.0.jar
@@ -21,7 +24,7 @@ $ java -jar build/libs/flowerShopApi-1.0.0.jar
 - run Main.kt
 
 // run test case
-- run MainTest.kt
+$ ./gradlew test
 ```
 
 open project in intellij idea
