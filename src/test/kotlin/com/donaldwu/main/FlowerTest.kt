@@ -12,7 +12,6 @@ class FlowerTest {
     private val logger = LoggerFactory.getLogger(ShopTest::class.java)
 
     private val rootUrl = "https://flower-shop-api.herokuapp.com/api"
-
     private val createFlowerUrl = "%s/flower/create-flower".format(rootUrl)
     private val getAllFlowerUrl = "%s/flower".format(rootUrl)
     private val getFlowerByIdUrl = "%s/flower/1".format(rootUrl)
