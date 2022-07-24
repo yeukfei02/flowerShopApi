@@ -21,5 +21,19 @@ create table flower (
   updatedBy timestamp not null default CURRENT_TIMESTAMP
 );
 
---DROP TABLE flower;
---DROP TABLE shop;
+CREATE INDEX index_shop_on_image ON shop(image);
+CREATE INDEX index_shop_on_shopName ON shop(shopName);
+CREATE INDEX index_shop_on_phone ON shop(phone);
+CREATE INDEX index_shop_on_address ON shop(address);
+CREATE INDEX index_shop_on_createdBy ON shop(createdBy);
+CREATE INDEX index_shop_on_updatedBy ON shop(updatedBy);
+
+CREATE INDEX index_flower_on_image ON flower(image);
+CREATE INDEX index_flower_on_flowerName ON flower(flowerName);
+CREATE INDEX index_flower_on_color ON flower(color);
+CREATE INDEX index_flower_on_flowerType ON flower(flowerType);
+CREATE INDEX index_flower_on_price ON flower(price);
+CREATE INDEX index_flower_on_occasion ON flower(occasion);
+CREATE INDEX index_flower_on_shopId ON flower(shopId);
+CREATE INDEX index_flower_on_createdBy ON flower(createdBy);
+CREATE INDEX index_flower_on_updatedBy ON flower(updatedBy);
