@@ -1,6 +1,6 @@
 package com.donaldwu.main.model.shop
 
-import com.donaldwu.main.common.Common
+import com.donaldwu.main.helper.Helper
 import com.donaldwu.main.tableinterface.shop.Shop
 import com.donaldwu.main.table.shop.Shops
 import me.liuwj.ktorm.dsl.*
@@ -10,7 +10,7 @@ import me.liuwj.ktorm.entity.sequenceOf
 
 class ShopModel {
     companion object {
-        private val database = Common.connectDataBase()
+        private val database = Helper.connectDataBase()
         private val sequence = database.sequenceOf(Shops)
 
         fun createShop(image: String, shopName: String, phone: String, address: String) {
@@ -66,10 +66,10 @@ class ShopModel {
                 testMap["phone"] = it.phone
                 testMap["address"] = it.address
 
-                val formattedCreatedBy = Common.getFormattedDateTime(it.createdBy)
+                val formattedCreatedBy = Helper.getFormattedDateTime(it.createdBy)
                 testMap["createdBy"] = formattedCreatedBy
 
-                val formattedUpdatedBy = Common.getFormattedDateTime(it.updatedBy)
+                val formattedUpdatedBy = Helper.getFormattedDateTime(it.updatedBy)
                 testMap["updatedBy"] = formattedUpdatedBy
                 resultList.add(testMap)
             }
@@ -88,10 +88,10 @@ class ShopModel {
                 testMap["phone"] = shop.phone
                 testMap["address"] = shop.address
 
-                val formattedCreatedBy = Common.getFormattedDateTime(shop.createdBy)
+                val formattedCreatedBy = Helper.getFormattedDateTime(shop.createdBy)
                 testMap["createdBy"] = formattedCreatedBy
 
-                val formattedUpdatedBy = Common.getFormattedDateTime(shop.updatedBy)
+                val formattedUpdatedBy = Helper.getFormattedDateTime(shop.updatedBy)
                 testMap["updatedBy"] = formattedUpdatedBy
             }
             return testMap

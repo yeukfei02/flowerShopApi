@@ -1,6 +1,6 @@
 package com.donaldwu.main.model.flower
 
-import com.donaldwu.main.common.Common
+import com.donaldwu.main.helper.Helper
 import com.donaldwu.main.model.shop.ShopModel
 import com.donaldwu.main.tableinterface.flower.Flower
 import com.donaldwu.main.table.flower.Flowers
@@ -11,7 +11,7 @@ import me.liuwj.ktorm.entity.sequenceOf
 
 class FlowerModel {
     companion object {
-        private val database = Common.connectDataBase()
+        private val database = Helper.connectDataBase()
         private val sequence = database.sequenceOf(Flowers)
 
         fun createFlower(image: String, flowerName: String, color: String,
@@ -92,10 +92,10 @@ class FlowerModel {
                 shopTestMap["shopName"] = shop["shopName"].toString()
                 testMap["shop"] = shopTestMap
 
-                val formattedCreatedBy = Common.getFormattedDateTime(it.createdBy)
+                val formattedCreatedBy = Helper.getFormattedDateTime(it.createdBy)
                 testMap["createdBy"] = formattedCreatedBy
 
-                val formattedUpdatedBy = Common.getFormattedDateTime(it.updatedBy)
+                val formattedUpdatedBy = Helper.getFormattedDateTime(it.updatedBy)
                 testMap["updatedBy"] = formattedUpdatedBy
                 resultList.add(testMap)
             }
@@ -122,10 +122,10 @@ class FlowerModel {
                 shopTestMap["shopName"] = shop["shopName"].toString()
                 testMap["shop"] = shopTestMap
 
-                val formattedCreatedBy = Common.getFormattedDateTime(flower.createdBy)
+                val formattedCreatedBy = Helper.getFormattedDateTime(flower.createdBy)
                 testMap["createdBy"] = formattedCreatedBy
 
-                val formattedUpdatedBy = Common.getFormattedDateTime(flower.updatedBy)
+                val formattedUpdatedBy = Helper.getFormattedDateTime(flower.updatedBy)
                 testMap["updatedBy"] = formattedUpdatedBy
             }
             return testMap

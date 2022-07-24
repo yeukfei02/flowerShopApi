@@ -1,4 +1,3 @@
-
 create table shop (
   shopId serial primary key,
   image text not null,
