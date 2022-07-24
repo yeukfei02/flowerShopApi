@@ -1,6 +1,6 @@
 package com.donaldwu.main.controller.shop
 
-import com.donaldwu.main.common.Common
+import com.donaldwu.main.helper.Helper
 import com.donaldwu.main.model.shop.ShopModel
 import io.javalin.http.Context
 
@@ -9,7 +9,7 @@ class ShopController {
         fun createShop(ctx: Context) {
             val body = ctx.body()
             if (body.isNotEmpty()) {
-                val bodyDataMap = Common.getBodyData(body)
+                val bodyDataMap = Helper.getBodyData(body)
 
                 val image = bodyDataMap["image"].toString()
                 val shopName = bodyDataMap["shopName"].toString()
@@ -59,7 +59,7 @@ class ShopController {
                 if (shopFromDB.isNotEmpty()) {
                     val body = ctx.body()
                     if (body.isNotEmpty()) {
-                        val bodyDataMap = Common.getBodyData(body)
+                        val bodyDataMap = Helper.getBodyData(body)
 
                         val image = bodyDataMap["image"].toString()
                         val shopName = bodyDataMap["shopName"].toString()
